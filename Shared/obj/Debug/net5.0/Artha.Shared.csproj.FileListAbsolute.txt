@@ -1,0 +1,12 @@
+G:\Application\Artha\Shared\bin\Debug\net5.0\Artha.Shared.deps.json
+G:\Application\Artha\Shared\bin\Debug\net5.0\Artha.Shared.dll
+G:\Application\Artha\Shared\bin\Debug\net5.0\ref\Artha.Shared.dll
+G:\Application\Artha\Shared\bin\Debug\net5.0\Artha.Shared.pdb
+G:\Application\Artha\Shared\obj\Debug\net5.0\Artha.Shared.GeneratedMSBuildEditorConfig.editorconfig
+G:\Application\Artha\Shared\obj\Debug\net5.0\Artha.Shared.AssemblyInfoInputs.cache
+G:\Application\Artha\Shared\obj\Debug\net5.0\Artha.Shared.AssemblyInfo.cs
+G:\Application\Artha\Shared\obj\Debug\net5.0\Artha.Shared.csproj.CoreCompileInputs.cache
+G:\Application\Artha\Shared\obj\Debug\net5.0\Artha.Shared.dll
+G:\Application\Artha\Shared\obj\Debug\net5.0\ref\Artha.Shared.dll
+G:\Application\Artha\Shared\obj\Debug\net5.0\Artha.Shared.pdb
+G:\Application\Artha\Shared\obj\Debug\net5.0\Artha.Shared.csprojAssemblyReference.cache

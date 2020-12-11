@@ -1,0 +1,6 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="G:\Application\Artha\Client\bin\Debug\net5.0\wwwroot\" />
+  <ContentRoot BasePath="/" Path="G:\Application\Artha\Client\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="/" Path="G:\Application\Artha\Client\wwwroot\" />
+  <ContentRoot BasePath="/Identity" Path="C:\Users\alvin\.nuget\packages\microsoft.aspnetcore.identity.ui\5.0.1\staticwebassets\V4\" />
+</StaticWebAssets>
