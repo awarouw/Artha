@@ -1,0 +1,23 @@
+﻿@page "/Country/create"
+@inject ICountryService CountryService
+@inject NavigationManager navigationManager
+@attribute [Authorize]
+
+<h3>Create Country</h3>
+
+<CountryForm Country="Country" OnValidSubmit="Create" />
+
+@code { Country Country = new Country();
+
+    private async Task Create()
+    {
+        try
+        {
+            await CountryService.CreateCountry(Country);
+            navigationManager.NavigateTo("Country");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    } }

@@ -1,0 +1,32 @@
+﻿
+<EditForm Model="Country" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label for="name">Code</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Country.Code" />
+            <ValidationMessage For="@(() => Country.Code)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Country.Name" />
+            <ValidationMessage For="@(() => Country.Name)" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</EditForm>
+
+@code {
+    [Parameter] public Country Country { get; set; }
+            [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+            protected override void OnInitialized()
+            {
+            } 
+    }

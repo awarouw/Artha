@@ -1,0 +1,26 @@
+﻿@page "/Location/edit/{LocationId:int}"
+@inject ILocationService LocationService
+@inject NavigationManager navigationManager
+@attribute [Authorize]
+
+<h3>Edit Location</h3>
+
+@if (Location != null)
+{
+<LocationForm Location="Location" OnValidSubmit="Edit" />
+}
+
+@code { [Parameter] public int LocationId { get; set; }
+
+            Location Location;
+
+            protected async override Task OnInitializedAsync()
+            {
+                Location = await LocationService.GetLocationById(LocationId);
+            }
+
+            private async Task Edit()
+            {
+                await LocationService.UpdateLocation(Location);
+                navigationManager.NavigateTo("Location");
+            } }

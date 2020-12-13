@@ -1,0 +1,23 @@
+﻿@page "/Location/create"
+@inject ILocationService LocationService
+@inject NavigationManager navigationManager
+@attribute [Authorize]
+
+<h3>Create Location</h3>
+
+<LocationForm Location="Location" OnValidSubmit="Create" />
+
+@code { Location Location = new Location();
+
+    private async Task Create()
+    {
+        try
+        {
+            await LocationService.CreateLocation(Location);
+            navigationManager.NavigateTo("Location");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    } }

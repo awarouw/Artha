@@ -1,0 +1,23 @@
+﻿@page "/FixedAsset/create"
+@inject IFixedAssetService FixedAssetService
+@inject NavigationManager navigationManager
+@attribute [Authorize]
+
+<h3>Create FixedAsset</h3>
+
+<FixedAssetForm FixedAsset="FixedAsset" OnValidSubmit="Create" />
+
+@code { FixedAsset FixedAsset = new FixedAsset();
+
+    private async Task Create()
+    {
+        try
+        {
+            await FixedAssetService.CreateFixedAsset(FixedAsset);
+            navigationManager.NavigateTo("FixedAsset");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    } }

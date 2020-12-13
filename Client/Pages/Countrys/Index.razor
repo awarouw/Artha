@@ -1,0 +1,74 @@
+﻿@page "/Country"
+@inject ICountryService CountryService
+@attribute [Authorize]
+
+<h3>Index Country</h3>
+
+<div class="form-group">
+    <a class="btn btn-info" href="Country/create">New Country</a>
+</div>
+
+<Pagination CurrentPage="@paginationViewModel.Page" TotalAmountPages="totalAmountPages"
+            SelectedPage="SelectedPage" />
+
+<GenericList List="Country">
+    <WholeListTemplate>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Code</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Country)
+                {
+<tr>
+    <td>
+        <a class="btn btn-success" href="/Country/edit/@item.CountryID">Edit</a>
+        <button class="btn btn-danger" @onclick="@(() => DeleteCountry(item.CountryID))">Delete</button>
+    </td>
+    <td>@item.Code</td>
+    <td>@item.Name</td>
+</tr>
+}
+            </tbody>
+        </table>
+    </WholeListTemplate>
+</GenericList>
+
+@code { List<Country> Country;
+    PaginationViewModel paginationViewModel = new PaginationViewModel() { RecordsPerPage = 10 };
+    private int totalAmountPages;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await LoadCountry();
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+    private async Task LoadCountry()
+    {
+        var paginatedResponse = await CountryService.GetCountry(paginationViewModel);
+        Country = paginatedResponse.Response;
+        totalAmountPages = paginatedResponse.TotalAmountPages;
+    }
+
+    private async Task SelectedPage(int page)
+    {
+        paginationViewModel.Page = page;
+        await LoadCountry();
+    }
+
+    private async Task DeleteCountry(int id)
+    {
+        await CountryService.DeleteCountry(id);
+        await LoadCountry();
+    } }

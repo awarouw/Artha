@@ -146,7 +146,7 @@ using Blazored.LocalStorage;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "G:\Application\Artha\Client\Shared\NavMenu.razor"
+#line 43 "G:\Application\Artha\Client\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

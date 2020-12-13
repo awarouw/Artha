@@ -1,0 +1,75 @@
+﻿
+<EditForm Model="Route" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label for="name">TransferfromCode</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Route.TransferfromCode" />
+            <ValidationMessage For="@(() => Route.TransferfromCode)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">TransfertoCode</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Route.TransfertoCode" />
+            <ValidationMessage For="@(() => Route.TransfertoCode)" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="name">JarakTempuh</label>
+        <div>
+            <InputNumber class="form-control" @bind-Value="@Route.JarakTempuh" />
+            <ValidationMessage For="@(() => Route.JarakTempuh)" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="name">BiayaToll</label>
+        <div>
+            <InputNumber class="form-control" @bind-Value="@Route.BiayaToll" />
+            <ValidationMessage For="@(() => Route.BiayaToll)" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="name">BiayaBBM</label>
+        <div>
+            <InputNumber class="form-control" @bind-Value="@Route.BiayaBBM" />
+            <ValidationMessage For="@(() => Route.BiayaBBM)" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="name">Retribusi</label>
+        <div>
+            <InputNumber class="form-control" @bind-Value="@Route.Retribusi" />
+            <ValidationMessage For="@(() => Route.Retribusi)" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="name">BiayaLainLain</label>
+        <div>
+            <InputNumber class="form-control" @bind-Value="@Route.BiayaLainLain" />
+            <ValidationMessage For="@(() => Route.BiayaLainLain)" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</EditForm>
+
+@code { [Parameter] public TransferRoute Route { get; set; }
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+    protected override void OnInitialized()
+    {
+    } }

@@ -1,0 +1,83 @@
+﻿@page "/route"
+@inject IRouteService RouteService
+@attribute [Authorize]
+
+<h3>Index Route</h3>
+
+<div class="form-group">
+    <a class="btn btn-info" href="Route/create">New Route</a>
+</div>
+
+<Pagination CurrentPage="@paginationViewModel.Page" TotalAmountPages="totalAmountPages"
+            SelectedPage="SelectedPage" />
+
+<GenericList List="Route">
+    <WholeListTemplate>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>TransferfromCode</th>
+                    <th>TransfertoCode</th>
+                    <th>JarakTempuh</th>
+                    <th>BiayaToll</th>
+                    <th>BiayaBBM</th>
+                    <th>Retribusi</th>
+                    <th>BiayaLainLain</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Route)
+                {
+                <tr>
+                    <td>
+                        <a class="btn btn-success" href="/Route/edit/@item.TransferRouteID">Edit</a>
+                        <button class="btn btn-danger" @onclick="@(() => DeleteRoute(item.TransferRouteID))">Delete</button>
+                    </td>
+                    <td>@item.TransferfromCode</td>
+                    <td>@item.TransfertoCode</td>
+                    <td>@item.JarakTempuh</td>
+                    <td>@item.BiayaToll</td>
+                    <td>@item.BiayaBBM</td>
+                    <td>@item.Retribusi</td>
+                    <td>@item.BiayaLainLain</td>
+                </tr>}
+            </tbody>
+        </table>
+    </WholeListTemplate>
+</GenericList>
+
+@code { List<TransferRoute> Route;
+    PaginationViewModel paginationViewModel = new PaginationViewModel() { RecordsPerPage = 10 };
+    private int totalAmountPages;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await LoadRoute();
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+    private async Task LoadRoute()
+    {
+        var paginatedResponse = await RouteService.GetRoute(paginationViewModel);
+        Route = paginatedResponse.Response;
+        totalAmountPages = paginatedResponse.TotalAmountPages;
+    }
+
+    private async Task SelectedPage(int page)
+    {
+        paginationViewModel.Page = page;
+        await LoadRoute();
+    }
+
+    private async Task DeleteRoute(int id)
+    {
+        await RouteService.DeleteRoute(id);
+        await LoadRoute();
+    } }

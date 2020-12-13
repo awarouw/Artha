@@ -1,0 +1,76 @@
+﻿@page "/FixedAsset"
+@inject IFixedAssetService FixedAssetService
+@attribute [Authorize]
+
+<h3>Index FixedAsset</h3>
+
+<div class="form-group">
+    <a class="btn btn-info" href="FixedAsset/create">New FixedAsset</a>
+</div>
+
+<Pagination CurrentPage="@paginationViewModel.Page" TotalAmountPages="totalAmountPages"
+            SelectedPage="SelectedPage" />
+
+<GenericList List="FixedAsset">
+    <WholeListTemplate>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>No</th>
+                    <th>Description</th>
+                    <th>SerialNo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in FixedAsset)
+                {
+<tr>
+    <td>
+        <a class="btn btn-success" href="/FixedAsset/edit/@item.FixedAssetID">Edit</a>
+        <button class="btn btn-danger" @onclick="@(() => DeleteFixedAsset(item.FixedAssetID))">Delete</button>
+    </td>
+    <td>@item.No</td>
+    <td>@item.Description</td>
+    <td>@item.SerialNo</td>
+</tr>
+}
+            </tbody>
+        </table>
+    </WholeListTemplate>
+</GenericList>
+
+@code { List<FixedAsset> FixedAsset;
+    PaginationViewModel paginationViewModel = new PaginationViewModel() { RecordsPerPage = 10 };
+    private int totalAmountPages;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await LoadFixedAsset();
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+    private async Task LoadFixedAsset()
+    {
+        var paginatedResponse = await FixedAssetService.GetFixedAsset(paginationViewModel);
+        FixedAsset = paginatedResponse.Response;
+        totalAmountPages = paginatedResponse.TotalAmountPages;
+    }
+
+    private async Task SelectedPage(int page)
+    {
+        paginationViewModel.Page = page;
+        await LoadFixedAsset();
+    }
+
+    private async Task DeleteFixedAsset(int id)
+    {
+        await FixedAssetService.DeleteFixedAsset(id);
+        await LoadFixedAsset();
+    } }

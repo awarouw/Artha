@@ -32,6 +32,10 @@ namespace Artha.Client
             builder.Services.AddScoped<IHttpService, HttpService>();
 
             builder.Services.AddScoped<IDriverService, DriverService>();
+            builder.Services.AddScoped<ICountryService, CountryService>();
+            builder.Services.AddScoped<ILocationService, LocationService>();
+            builder.Services.AddScoped<IFixedAssetService, FixedAssetService>();
+            builder.Services.AddScoped<IRouteService, RouteService>();
 
             await builder.Build().RunAsync();
         }

@@ -1,0 +1,27 @@
+﻿@page "/Country/edit/{CountryId:int}"
+@inject ICountryService CountryService
+@inject NavigationManager navigationManager
+@attribute [Authorize]
+
+<h3>Edit Country</h3>
+
+@if (Country != null)
+{
+<CountryForm Country="Country" OnValidSubmit="Edit" />}
+
+@code { 
+    [Parameter] public int CountryId { get; set; }
+
+    Country Country;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Country = await CountryService.GetCountryById(CountryId);
+    }
+
+    private async Task Edit()
+    {
+        await CountryService.UpdateCountry(Country);
+        navigationManager.NavigateTo("Country");
+    }
+    }

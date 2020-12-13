@@ -51,14 +51,129 @@ namespace Artha.Server.Migrations
 
                     b.HasKey("CountryID");
 
-                    b.ToTable("Countries");
+                    b.ToTable("Country");
+
+                    b.HasData(
+                        new
+                        {
+                            CountryID = 1,
+                            Code = "ID",
+                            CreatedBy = "System",
+                            CreatedTime = new DateTime(2020, 12, 13, 12, 12, 32, 904, DateTimeKind.Utc).AddTicks(2626),
+                            LastModifiedBy = "",
+                            LastModifiedTime = new DateTime(2020, 12, 13, 20, 12, 32, 904, DateTimeKind.Local).AddTicks(65),
+                            Name = "Indonesia",
+                            RowStatus = (short)0
+                        });
+                });
+
+            modelBuilder.Entity("Artha.Shared.Entities.FixedAsset", b =>
+                {
+                    b.Property<int>("FixedAssetID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<byte>("Blocked")
+                        .HasColumnType("tinyint");
+
+                    b.Property<byte>("BudgetedAsset")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("ComponentofMainAsset")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("varchar(30)");
+
+                    b.Property<string>("Description2")
+                        .HasColumnType("varchar(30)");
+
+                    b.Property<string>("FAClassCode")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("FALocationCode")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("FAPostingGroup")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("FASubclassCode")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("FileNamePicture")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("GlobalDimension1Code")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("GlobalDimension2Code")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LocationCode")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<int>("MainAssetComponent")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MaintenanceVendorNo")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<DateTime?>("NextServiceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("No")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("NoSeries")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("ResponsibleEmployee")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<short>("RowStatus")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("SearchDescription")
+                        .HasColumnType("varchar(30)");
+
+                    b.Property<string>("SerialNo")
+                        .HasColumnType("varchar(30)");
+
+                    b.Property<byte>("UnderMaintenance")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("VendorNo")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<DateTime?>("WarrantyDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("FixedAssetID");
+
+                    b.ToTable("FixedAsset");
                 });
 
             modelBuilder.Entity("Artha.Shared.Entities.Location", b =>
                 {
-                    b.Property<string>("LocationCode")
-                        .IsConcurrencyToken()
-                        .HasColumnType("varchar(20)");
+                    b.Property<int>("LocationID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Address")
                         .HasColumnType("varchar(100)");
@@ -138,10 +253,10 @@ namespace Artha.Server.Migrations
                     b.Property<DateTime?>("LastModifiedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("LocationID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                    b.Property<string>("LocationCode")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("LocationName")
                         .HasColumnType("varchar(50)");
@@ -212,9 +327,9 @@ namespace Artha.Server.Migrations
                     b.Property<short>("UsePutawayWorksheet")
                         .HasColumnType("smallint");
 
-                    b.HasKey("LocationCode");
+                    b.HasKey("LocationID");
 
-                    b.ToTable("Locations");
+                    b.ToTable("Location");
                 });
 
             modelBuilder.Entity("Artha.Shared.Entities.Staff", b =>
@@ -432,6 +547,63 @@ namespace Artha.Server.Migrations
                     b.ToTable("Staff");
                 });
 
+            modelBuilder.Entity("Artha.Shared.Entities.TransferRoute", b =>
+                {
+                    b.Property<int>("TransferRouteID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<decimal>("BiayaBBM")
+                        .HasColumnType("decimal(18,5)");
+
+                    b.Property<decimal>("BiayaLainLain")
+                        .HasColumnType("decimal(18,5)");
+
+                    b.Property<decimal>("BiayaToll")
+                        .HasColumnType("decimal(18,5)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InTransitCode")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<decimal>("JarakTempuh")
+                        .HasColumnType("decimal(18,5)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Retribusi")
+                        .HasColumnType("decimal(18,5)");
+
+                    b.Property<short>("RowStatus")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("ShippingAgentCode")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("ShippingAgentServiceCode")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("TransferfromCode")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("TransfertoCode")
+                        .HasColumnType("varchar(20)");
+
+                    b.HasKey("TransferRouteID");
+
+                    b.ToTable("TransferRoute");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -461,15 +633,15 @@ namespace Artha.Server.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "036bbfd4-1bfd-4975-afb6-fc77c17b3da5",
-                            ConcurrencyStamp = "29b44c09-7dcb-4b46-ae73-95536b95e27f",
+                            Id = "17a79b13-dd42-4086-92fb-107add0664f4",
+                            ConcurrencyStamp = "7854bd57-3186-4e7a-9392-0d5d0555305a",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "a7b4700a-afa1-4c8c-b05e-0ddc019c7a21",
-                            ConcurrencyStamp = "a3b67a57-0715-4db9-87dc-5d392afefecb",
+                            Id = "ec49eb61-9e03-471a-b7c2-1c63142999cd",
+                            ConcurrencyStamp = "1b6abe58-a97e-47e0-98db-b257befb5506",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

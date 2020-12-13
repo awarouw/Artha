@@ -1,0 +1,62 @@
+﻿
+<EditForm Model="Location" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label for="name">LocationCode</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Location.LocationCode" />
+            <ValidationMessage For="@(() => Location.LocationCode)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">LocationName</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Location.LocationName" />
+            <ValidationMessage For="@(() => Location.LocationName)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Address</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Location.Address" />
+            <ValidationMessage For="@(() => Location.Address)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">City</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Location.City" />
+            <ValidationMessage For="@(() => Location.City)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">PhoneNo</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Location.PhoneNo" />
+            <ValidationMessage For="@(() => Location.PhoneNo)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Contact</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Location.Contact" />
+            <ValidationMessage For="@(() => Location.Contact)" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</EditForm>
+
+@code { [Parameter] public Location Location { get; set; }
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+    protected override void OnInitialized()
+    {
+    } }

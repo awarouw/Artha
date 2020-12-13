@@ -1,0 +1,81 @@
+﻿@page "/Location"
+@inject ILocationService LocationService
+@attribute [Authorize]
+
+<h3>Index Location</h3>
+
+<div class="form-group">
+    <a class="btn btn-info" href="Location/create">New Location</a>
+</div>
+
+<Pagination CurrentPage="@paginationViewModel.Page" TotalAmountPages="totalAmountPages"
+            SelectedPage="SelectedPage" />
+
+<GenericList List="Location">
+    <WholeListTemplate>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>LocationCode</th>
+                    <th>LocationName</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>PhoneNo</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Location)
+                {
+<tr>
+    <td>
+        <a class="btn btn-success" href="/Location/edit/@item.LocationID">Edit</a>
+        <button class="btn btn-danger" @onclick="@(() => DeleteLocation(item.LocationID))">Delete</button>
+    </td>
+    <td>@item.LocationCode</td>
+    <td>@item.LocationName</td>
+    <td>@item.Address</td>
+    <td>@item.City</td>
+    <td>@item.PhoneNo</td>
+    <td>@item.Contact</td>
+</tr>}
+            </tbody>
+        </table>
+    </WholeListTemplate>
+</GenericList>
+
+@code { List<Location> Location;
+    PaginationViewModel paginationViewModel = new PaginationViewModel() { RecordsPerPage = 10 };
+    private int totalAmountPages;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await LoadLocation();
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+    private async Task LoadLocation()
+    {
+        var paginatedResponse = await LocationService.GetLocation(paginationViewModel);
+        Location = paginatedResponse.Response;
+        totalAmountPages = paginatedResponse.TotalAmountPages;
+    }
+
+    private async Task SelectedPage(int page)
+    {
+        paginationViewModel.Page = page;
+        await LoadLocation();
+    }
+
+    private async Task DeleteLocation(int id)
+    {
+        await LocationService.DeleteLocation(id);
+        await LoadLocation();
+    } }

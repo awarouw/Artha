@@ -1,0 +1,38 @@
+﻿
+<EditForm Model="FixedAsset" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label for="name">No</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@FixedAsset.No" />
+            <ValidationMessage For="@(() => FixedAsset.No)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Description</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@FixedAsset.Description" />
+            <ValidationMessage For="@(() => FixedAsset.Description)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">SerialNo</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@FixedAsset.SerialNo" />
+            <ValidationMessage For="@(() => FixedAsset.SerialNo)" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</EditForm>
+
+@code { [Parameter] public FixedAsset FixedAsset { get; set; }
+            [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+            protected override void OnInitialized()
+            {
+            } }

@@ -5,10 +5,10 @@ namespace Artha.Shared.Entities
 {
     public class Location : EclipseLayer
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LocationID { get; set; }
 
-        [Key]
         [Column(TypeName = "varchar(20)")]
         [Required]
         [ConcurrencyCheck]

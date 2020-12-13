@@ -140,7 +140,7 @@ using Blazored.LocalStorage;
 #nullable disable
 #nullable restore
 #line 3 "G:\Application\Artha\Client\Pages\Drivers\Index.razor"
-           [Authorize(Roles = "Admin")]
+           [Authorize]
 
 #line default
 #line hidden

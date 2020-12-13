@@ -1,0 +1,23 @@
+﻿@page "/Route/create"
+@inject IRouteService RouteService
+@inject NavigationManager navigationManager
+@attribute [Authorize]
+
+<h3>Create Route</h3>
+
+<RouteForm Route="Route" OnValidSubmit="Create" />
+
+@code { TransferRoute Route = new TransferRoute();
+
+    private async Task Create()
+    {
+        try
+        {
+            await RouteService.CreateRoute(Route);
+            navigationManager.NavigateTo("Route");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    } }
