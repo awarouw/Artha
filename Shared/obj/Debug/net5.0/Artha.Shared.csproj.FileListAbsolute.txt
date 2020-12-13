@@ -9,4 +9,3 @@ G:\Application\Artha\Shared\obj\Debug\net5.0\Artha.Shared.csproj.CoreCompileInpu
 G:\Application\Artha\Shared\obj\Debug\net5.0\Artha.Shared.dll
 G:\Application\Artha\Shared\obj\Debug\net5.0\ref\Artha.Shared.dll
 G:\Application\Artha\Shared\obj\Debug\net5.0\Artha.Shared.pdb
-G:\Application\Artha\Shared\obj\Debug\net5.0\Artha.Shared.csprojAssemblyReference.cache

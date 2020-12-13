@@ -1,4 +1,4 @@
-﻿using Artha.Client.Helper;
+﻿using Artha.Client.Helpers;
 using Artha.Client.Services.Interface;
 using Artha.Shared.ViewModels;
 using Blazored.LocalStorage;

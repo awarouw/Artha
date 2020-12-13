@@ -1,0 +1,23 @@
+﻿@page "/driver/create"
+@inject IDriverService DriverService
+@inject NavigationManager navigationManager
+@attribute [Authorize(Roles = "Admin")]
+
+<h3>Create Driver</h3>
+
+<DriverForm Driver="Driver" OnValidSubmit="Create" />
+
+@code { Staff Driver = new Staff();
+
+    private async Task Create()
+    {
+        try
+        {
+            await DriverService.CreateDriver(Driver);
+            navigationManager.NavigateTo("driver");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    } }

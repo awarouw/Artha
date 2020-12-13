@@ -1,4 +1,4 @@
-using Artha.Client.Helper;
+using Artha.Client.Helpers;
 using Artha.Client.Services;
 using Artha.Client.Services.Interface;
 using Artha.Server.Data;
@@ -36,6 +36,7 @@ namespace Artha.Server
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

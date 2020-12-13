@@ -1,0 +1,26 @@
+﻿@page "/driver/edit/{DriverId:int}"
+@inject IDriverService DriverService
+@inject NavigationManager navigationManager
+@attribute [Authorize]
+
+<h3>Edit Driver</h3>
+
+@if (Driver != null)
+{
+<DriverForm Driver="Driver" OnValidSubmit="Edit" />
+}
+
+@code { [Parameter] public int DriverId { get; set; }
+
+            Staff Driver;
+
+            protected async override Task OnInitializedAsync()
+            {
+                Driver = await DriverService.GetDriverById(DriverId);
+            }
+
+            private async Task Edit()
+            {
+                await DriverService.UpdateDriver(Driver);
+                navigationManager.NavigateTo("driver");
+            } }

@@ -1,0 +1,57 @@
+﻿
+<EditForm Model="Driver" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label for="name">No</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Driver.No" />
+            <ValidationMessage For="@(() => Driver.No)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">First Name</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Driver.FirstName" />
+            <ValidationMessage For="@(() => Driver.FirstName)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Last Name</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Driver.LastName" />
+            <ValidationMessage For="@(() => Driver.LastName)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Address</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Driver.Address" />
+            <ValidationMessage For="@(() => Driver.Address)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Email Address</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Driver.EmailAddress" />
+            <ValidationMessage For="@(() => Driver.EmailAddress)" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</EditForm>
+
+@code {
+    [Parameter] public Staff Driver { get; set; }
+            [Parameter] public EventCallback OnValidSubmit { get; set; }
+
+            protected override void OnInitialized()
+            {
+            }
+
+    }

@@ -1,4 +1,4 @@
-using Artha.Client.Helper;
+using Artha.Client.Helpers;
 using Artha.Client.Services;
 using Artha.Client.Services.Interface;
 using Blazored.LocalStorage;
@@ -29,7 +29,9 @@ namespace Artha.Client
 
             builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
             builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IHttpService, HttpService>();
 
+            builder.Services.AddScoped<IDriverService, DriverService>();
 
             await builder.Build().RunAsync();
         }

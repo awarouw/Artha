@@ -200,13 +200,13 @@
       "mscorlib.dll": "sha256-FWPx51huC\/WJLkKCgoTEa5pzm8+4Aucxg0YuOiuOwkQ=",
       "netstandard.dll": "sha256-2ba2qAAtNUX9Qh5PFXhTMtcD\/Nra\/wyG197\/wrnxElI=",
       "System.Private.CoreLib.dll": "sha256-4wsl1v32v74UB0CTQ6+AdUTdM+9C1VraomgeCjb4Wug=",
-      "Artha.Shared.dll": "sha256-NSX5iC697HEWkxf+XvJSzf3hQmPo5fg747xJhLSA5p8=",
-      "Artha.Client.dll": "sha256-MiJM9gLwJPsFZrlnt5lYDmjUVi6CasqkpQvafTPc6nE="
+      "Artha.Shared.dll": "sha256-VwJoZQhNmhmoqVjah4rl47+r4t35Y7xtZj6abUTf0hk=",
+      "Artha.Client.dll": "sha256-eebECRBVYPYGxNuq8BqJNt9k0Yb3AbXLKweoJ9oh0Ig="
     },
     "lazyAssembly": null,
     "pdb": {
-      "Artha.Shared.pdb": "sha256-9OrdoZ6anbxWV\/ztYvlheUCCwyTl9YRXXcO9fGPYVgQ=",
-      "Artha.Client.pdb": "sha256-\/4IWZT1W6LdQP0vaTX72tuHBMGEmIzpYHn6Yq+4ulP4="
+      "Artha.Shared.pdb": "sha256-Gtfli9ZZ9mMjqg\/xUcFEUDNjaYT5d89vWsSoLECCsp0=",
+      "Artha.Client.pdb": "sha256-NkJhnydO2AaE0EsTTzYd9eEM0jMGgj1293jjagPfVvs="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-nXByiCO4+RYyh+A88TSSZDwAJMF7M7Up\/h6dfAA19C8=",

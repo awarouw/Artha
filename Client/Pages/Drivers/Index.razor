@@ -1,0 +1,80 @@
+﻿@page "/driver"
+@inject IDriverService DriverService
+@attribute [Authorize(Roles = "Admin")]
+
+<h3>Index Driver</h3>
+
+<div class="form-group">
+    <a class="btn btn-info" href="Driver/create">New Driver</a>
+</div>
+
+<Pagination CurrentPage="@paginationViewModel.Page" TotalAmountPages="totalAmountPages"
+            SelectedPage="SelectedPage" />
+
+<GenericList List="Driver">
+    <WholeListTemplate>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>No</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th>Email Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Driver)
+                {
+                <tr>
+                    <td>
+                        <a class="btn btn-success" href="/Driver/edit/@item.StaffID">Edit</a>
+                        <button class="btn btn-danger" @onclick="@(() => DeleteDriver(item.StaffID))">Delete</button>
+                    </td>
+                    <td>@item.No</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Address</td>
+                    <td>@item.EmailAddress</td>
+                </tr>
+}
+            </tbody>
+        </table>
+    </WholeListTemplate>
+</GenericList>
+
+@code { List<Staff> Driver;
+    PaginationViewModel paginationViewModel = new PaginationViewModel() { RecordsPerPage = 10 };
+    private int totalAmountPages;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await LoadDriver();
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+    private async Task LoadDriver()
+    {
+        var paginatedResponse = await DriverService.GetDriver(paginationViewModel);
+        Driver = paginatedResponse.Response;
+        totalAmountPages = paginatedResponse.TotalAmountPages;
+    }
+
+    private async Task SelectedPage(int page)
+    {
+        paginationViewModel.Page = page;
+        await LoadDriver();
+    }
+
+    private async Task DeleteDriver(int id)
+    {
+        await DriverService.DeleteDriver(id);
+        await LoadDriver();
+    } }

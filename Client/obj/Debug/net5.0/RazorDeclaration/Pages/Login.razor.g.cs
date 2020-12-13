@@ -112,7 +112,7 @@ using Artha.Client.Services.Interface;
 #nullable disable
 #nullable restore
 #line 15 "G:\Application\Artha\Client\_Imports.razor"
-using Artha.Client.Helper;
+using Artha.Client.Helpers;
 
 #line default
 #line hidden
@@ -125,7 +125,14 @@ using Artha.Shared.ViewModels;
 #line hidden
 #nullable disable
 #nullable restore
-#line 18 "G:\Application\Artha\Client\_Imports.razor"
+#line 17 "G:\Application\Artha\Client\_Imports.razor"
+using Artha.Shared.Entities;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 19 "G:\Application\Artha\Client\_Imports.razor"
 using Blazored.LocalStorage;
 
 #line default
